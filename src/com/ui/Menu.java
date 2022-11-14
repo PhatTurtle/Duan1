@@ -35,7 +35,7 @@ public class Menu extends javax.swing.JPanel {
     protected void paintChildren(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        GradientPaint gra = new GradientPaint(0, 0, Color.decode("#1cb5e0"), 0, getHeight(), Color.decode("#000046"));
+        GradientPaint gra = new GradientPaint(0, 0, Color.decode("#434343"), 0, getHeight(), Color.decode("#000000"));
         g2.setPaint(gra);
         g2.fillRoundRect(0, 0, getWidth(), getHeight(), 15, 15);
         g2.fillRect(getWidth() - 20, getHeight()-20, getWidth()-20, getHeight()-20);
@@ -127,7 +127,7 @@ public class Menu extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(472, Short.MAX_VALUE))
+                .addContainerGap(629, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

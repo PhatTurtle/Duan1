@@ -24,6 +24,13 @@ public class Main extends javax.swing.JFrame {
 
     }
     
+    void closeAll(){
+        PnKhachHang.setVisible(false);
+        PnKhuyenMai.setVisible(false);
+        PnNhanVien.setVisible(false);
+        PnSanPham.setVisible(false);
+    }
+    
     
 
     /**
@@ -46,14 +53,18 @@ public class Main extends javax.swing.JFrame {
         menu1 = new com.ui.Menu();
         panelBoder5 = new com.ui.PanelBoder();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblSanPham = new javax.swing.JLabel();
+        lblKhuyenMai = new javax.swing.JLabel();
+        lblLogout = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblNhanVien = new javax.swing.JLabel();
+        lblKhachHang = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        menu2 = new com.ui.Menu();
+        menu3 = new com.ui.Menu();
+        PnSanPham = new com.panel.SanPham();
+        PnNhanVien = new com.panel.NhanVien();
+        PnKhuyenMai = new com.panel.KhuyenMai();
+        PnKhachHang = new com.panel.KhachHang();
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -99,9 +110,14 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelBoder5.setBackground(new java.awt.Color(255, 255, 255));
+        panelBoder5.setBackground(new java.awt.Color(160, 160, 160));
         panelBoder5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -110,54 +126,107 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setText("Hóa Đơn");
         panelBoder5.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 240, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Sản Phẩm");
-        panelBoder5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 240, 30));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Khuyến Mãi");
-        panelBoder5.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 240, 30));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Logout");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblSanPham.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblSanPham.setForeground(new java.awt.Color(255, 255, 255));
+        lblSanPham.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSanPham.setText("Sản Phẩm");
+        lblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lblSanPhamMouseClicked(evt);
             }
         });
-        panelBoder5.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 240, 30));
-        panelBoder5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 260, 10));
+        panelBoder5.add(lblSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 240, 30));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Nhân Viên");
-        panelBoder5.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 240, 30));
+        lblKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblKhuyenMai.setForeground(new java.awt.Color(255, 255, 255));
+        lblKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblKhuyenMai.setText("Khuyến Mãi");
+        lblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblKhuyenMaiMouseClicked(evt);
+            }
+        });
+        panelBoder5.add(lblKhuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 240, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Khách Hàng");
-        panelBoder5.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 240, 30));
-        panelBoder5.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 260, 10));
-        panelBoder5.add(menu2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 720));
+        lblLogout.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblLogout.setForeground(new java.awt.Color(255, 255, 255));
+        lblLogout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogout.setText("Logout");
+        lblLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+        });
+        panelBoder5.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 240, 30));
+        panelBoder5.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 250, 10));
 
-        getContentPane().add(panelBoder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 720));
+        lblNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNhanVien.setForeground(new java.awt.Color(255, 255, 255));
+        lblNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNhanVien.setText("Nhân Viên");
+        lblNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNhanVienMouseClicked(evt);
+            }
+        });
+        panelBoder5.add(lblNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 240, 30));
+
+        lblKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblKhachHang.setForeground(new java.awt.Color(255, 255, 255));
+        lblKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblKhachHang.setText("Khách Hàng");
+        lblKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblKhachHangMouseClicked(evt);
+            }
+        });
+        panelBoder5.add(lblKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, 240, 30));
+        panelBoder5.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 630, 250, 10));
+        panelBoder5.add(menu3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelBoder5.add(PnSanPham, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 830, 720));
+        panelBoder5.add(PnNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 830, 720));
+        panelBoder5.add(PnKhuyenMai, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 830, 720));
+        panelBoder5.add(PnKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, 830, 720));
+
+        getContentPane().add(panelBoder5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void lblKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhachHangMouseClicked
+        // TODO add your handling code here:
+        closeAll();
+        PnKhachHang.setVisible(true);
+    }//GEN-LAST:event_lblKhachHangMouseClicked
+
+    private void lblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblKhuyenMaiMouseClicked
+        // TODO add your handling code here:
+        closeAll();
+        PnKhuyenMai.setVisible(true);
+    }//GEN-LAST:event_lblKhuyenMaiMouseClicked
+
+    private void lblNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNhanVienMouseClicked
+        // TODO add your handling code here:
+        closeAll();
+        PnNhanVien.setVisible(true);
+    }//GEN-LAST:event_lblNhanVienMouseClicked
+
+    private void lblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSanPhamMouseClicked
+        // TODO add your handling code here:
+        closeAll();
+        PnSanPham.setVisible(true);
+    }//GEN-LAST:event_lblSanPhamMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        closeAll();
+    }//GEN-LAST:event_formWindowOpened
 
     
     /**
@@ -196,20 +265,24 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.panel.KhachHang PnKhachHang;
+    private com.panel.KhuyenMai PnKhuyenMai;
+    private com.panel.NhanVien PnNhanVien;
+    private com.panel.SanPham PnSanPham;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private com.panel.KhachHang khachHang1;
+    private javax.swing.JLabel lblKhachHang;
+    private javax.swing.JLabel lblKhuyenMai;
+    private javax.swing.JLabel lblLogout;
+    private javax.swing.JLabel lblNhanVien;
+    private javax.swing.JLabel lblSanPham;
     private com.ui.Menu menu1;
-    private com.ui.Menu menu2;
+    private com.ui.Menu menu3;
     private com.ui.PanelBoder panelBoder2;
     private com.ui.PanelBoder panelBoder3;
     private com.ui.PanelBoder panelBoder5;
